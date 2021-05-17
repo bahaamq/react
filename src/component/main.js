@@ -1,21 +1,30 @@
 import React from 'react';
 import HornedBeasts from './HornedBeasts.js'
-
+import Horneddata from './Horneddata.json'
 class Main extends React.Component
 {
+
+
     render(){
         return (
-        <div>
-           
-    <HornedBeasts title={'Bahaa'} imageUrl={'https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'} desc={'test'}/>
+
+           <>
+            {Horneddata.map((item ,index) =>{
+                return (
+                    <HornedBeasts
+                        title={item.title}
+                        imgUrl={item.image_url}
+                        description= {item.description}
+                        key={index}
+                    />
 
 
-    <HornedBeasts title={'Bahaa'} imageUrl={'https://hatrabbits.com/wp-content/uploads/2017/01/random.jpg'} desc={'test'}/>
 
     
+                    )
+                })}
+              </>
 
-
-         </div>
         )}
 }
 
