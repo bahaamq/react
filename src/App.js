@@ -8,7 +8,7 @@ class App extends React.Component
 {
     render(){
       return (
-      <div>
+<div style={{textAlign: 'center'}}>
        <Header />
        <Main />
        <Footer />
