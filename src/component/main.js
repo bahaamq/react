@@ -1,28 +1,32 @@
 import React from 'react';
-import HornedBeasts from './HornedBeasts.js'
-class Main extends React.Component
-{
+import HornedBeasts from './HornedBeast';
 
 
-    render(){
-        return (
+class Main extends React.Component{
+  render(){
+    return(
+        <>
+        {this.props.hornedData.map((item,index)=>{
+            return(
+        <HornedBeasts
+        title={item.title}
+        image_url={item.image_url}
+        description={item.description}
+        key={index}
 
-           <>
-            {this.props.data.map((item ,index) =>{
-                return (
-                    <HornedBeasts
-                        title={item.title}
-                        imgUrl={item.image_url}
-                        description= {item.description}
-                        key={index}
-                    />
+        OurSelected ={this.props.OurSelected}
+        />
 
-    
-                    )
-                })}
-              </>
+        )
+        
+    })}
+    </>
 
-        )}
+    )
+  }
 }
 
-export default Main
+
+export default Main;
+
+
