@@ -4,6 +4,7 @@ import Footer from './component/footer';
 import Main from './component/main';
 import hornedData from './component/hornedData.json';
 import SelectedBeast from './component/SelectedBeast'
+import FilterData from './component/FilterData';
 
 
 class App extends React.Component{
@@ -13,15 +14,11 @@ class App extends React.Component{
         this.state={
             hornedData : hornedData,
           selectedAnimal: {},
-          show:false
+          show:false,
+        num:0,
+        filteredArray:hornedData
         }
       }
-    
-    
-    
-    
-    
-    
       
     
       OurSelected=(title)=> {
@@ -32,9 +29,31 @@ class App extends React.Component{
         
                   this.setState({
                     show:true,
-                    selectedAnimal: foundObj,
+                    selectedAnimal: foundObj
                   })
                 }
+
+                filterData=(num)=> {
+                  let newArrayv = hornedData.filter((element)=>
+                  {
+
+        if (element.horns==num)
+                      {
+                        // console.log(element.horns)
+
+                        return element
+                       
+                      }
+                  })
+
+  
+                 this.setState({
+                  num : this.state.num,
+                  filteredArray:newArrayv
+                 })
+                       
+                          }
+
                 
     
     
@@ -55,11 +74,17 @@ class App extends React.Component{
         }
     
       render(){
+
         return(
           <>
           <Header/>
+          <FilterData   
+          filterData={this.filterData}
+          />
+
           <Main
-           hornedData={this.state.hornedData}
+          filterDataNum={this.state.num}
+          hornedData={this.state.filteredArray}
            OurSelected={this.OurSelected}
            handleClose={this.handleClose}
            
@@ -75,8 +100,6 @@ class App extends React.Component{
           </>
         )
       }
-    
     }
-    
     
     export default App;
